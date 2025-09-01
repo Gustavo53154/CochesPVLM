@@ -231,7 +231,21 @@ function App() {
       <br />
       <br />
 
-      <button onClick={handleGuardar}>Guardar</button>
+      <button
+        onClick={handleGuardar}
+        style={{
+          backgroundColor: "#2563eb",
+          color: "white",
+          padding: "0.5rem 1rem",
+          border: "none",
+          borderRadius: "0.5rem",
+          cursor: "pointer",
+        }}
+        onMouseOver={(e) => (e.target.style.backgroundColor = "#1e40af")}
+        onMouseOut={(e) => (e.target.style.backgroundColor = "#2563eb")}
+      >
+        Guardar
+      </button>
       <hr />
 
       {/* Responsive gráficos */}
@@ -272,7 +286,18 @@ function App() {
               />
               <button
                 onClick={handleBuscar}
-                style={{ width: "100%", boxSizing: "border-box" }}
+                style={{
+                  width: "100%",
+                  boxSizing: "border-box",
+                  backgroundColor: "#2563eb",
+                  color: "white",
+                  padding: "0.5rem 1rem",
+                  border: "none",
+                  borderRadius: "0.5rem",
+                  cursor: "pointer",
+                }}
+                onMouseOver={(e) => (e.target.style.backgroundColor = "#1e40af")}
+                onMouseOut={(e) => (e.target.style.backgroundColor = "#2563eb")}
               >
                 Buscar
               </button>
@@ -298,7 +323,7 @@ function App() {
         {reportes.length === 0 && <li>No hay reportes aún</li>}
         {reportes.map((r) => (
           <li key={r.idReporte}>
-            {new Date(r.FechaHora).toLocaleString()} - Coche {r.IdCoche} -{" "}
+            {new Date(r.FechaHora).toLocaleString()} - Coche {r.IdCoche} - {" "}
             {r.Ubicacion} - NCPU: {r.NCPU}
           </li>
         ))}
