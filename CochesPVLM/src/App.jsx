@@ -98,7 +98,10 @@ function App() {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter") handleGuardar();
+    if (e.key === "Enter") {
+      e.preventDefault(); // evita submit en mobile
+      handleGuardar();
+    }
   };
 
   // --- Buscar coche
@@ -197,18 +200,8 @@ function App() {
   return (
     <div style={{ padding: "2rem", fontFamily: "Arial" }}>
       <h2>Registrar Coche</h2>
-      <label>
-        Número de Coche:
-        <input
-          type="number"
-          value={numeroCoche}
-          onChange={(e) => setNumeroCoche(e.target.value)}
-          onKeyDown={handleKeyDown}
-          style={{ marginLeft: "1rem" }}
-        />
-      </label>
-      <br />
-      <br />
+
+      {/* Ubicación primero */}
       <label>
         Ubicación:
         <select
@@ -222,22 +215,53 @@ function App() {
       </label>
       <br />
       <br />
+
+      {/* Número de coche después */}
+      <label>
+        Número de Coche:
+        <input
+          type="number"
+          value={numeroCoche}
+          onChange={(e) => setNumeroCoche(e.target.value)}
+          onKeyDown={handleKeyDown}
+          style={{ marginLeft: "1rem" }}
+        />
+      </label>
+      <br />
+      <br />
+
       <button onClick={handleGuardar}>Guardar</button>
       <hr />
-      <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start" }}>
+
+      {/* Responsive gráficos */}
+      <div
+        style={{
+          display: "flex",
+          gap: "2rem",
+          alignItems: "flex-start",
+          flexWrap: "wrap", // clave: se acomoda abajo en pantallas chicas
+        }}
+      >
         {/* Pie */}
-        <div style={{ width: "300px" }}>
+        <div style={{ width: "300px", flex: "1 1 100%" }}>
           <h3>Estado de Coches</h3>
           <Pie data={pieData} />
         </div>
 
         {/* Barra + detalle + buscar */}
-        <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start" }}>
-          <div style={{ width: "500px" }}>
+        <div
+          style={{
+            display: "flex",
+            gap: "2rem",
+            alignItems: "flex-start",
+            flexWrap: "wrap", // igual aquí
+          }}
+        >
+          <div style={{ width: "500px", flex: "1 1 100%" }}>
             <h3>Coches en Riesgo (Antigüedad)</h3>
             <Bar data={barData} options={barOptions} width={300} height={200} />
           </div>
-          <div style={{ width: "250px" }}>
+          <div style={{ width: "250px", flex: "1 1 100%" }}>
             <h3>Detalle</h3>
             <ul>
               <li>{`<5 min : ${cochesPorRango["<5 min"].join(", ") || "Ninguno"}`}</li>
@@ -248,7 +272,7 @@ function App() {
           </div>
 
           {/* Nueva sección buscar coche */}
-          <div style={{ width: "250px" }}>
+          <div style={{ width: "250px", flex: "1 1 100%" }}>
             <h3>Buscar coche</h3>
             <input
               type="number"
