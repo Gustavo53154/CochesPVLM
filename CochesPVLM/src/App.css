@@ -1,0 +1,28 @@
+:root{
+  --bg:#f7f7fb;
+  --card:#fff;
+  --accent:#1e88e5;
+  --danger:#d32f2f;
+}
+
+*{box-sizing:border-box}
+body,html,#root{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial}
+.app{max-width:980px;margin:20px auto;padding:18px;background:var(--bg);border-radius:8px}
+header h1{margin:0;font-size:20px}
+header small{color:#666}
+.controller{display:flex;gap:20px;align-items:flex-start;margin-top:14px}
+.select-location{flex:1;padding:12px;background:var(--card);border-radius:8px;box-shadow:0 1px 2px rgba(0,0,0,0.04)}
+.enter-id{flex:2;padding:12px;background:var(--card);border-radius:8px;box-shadow:0 1px 2px rgba(0,0,0,0.04)}
+.buttons{margin-top:8px;display:flex;gap:8px}
+button{padding:8px 12px;border:1px solid #ccc;background:#fff;border-radius:6px;cursor:pointer}
+button.primary{background:var(--accent);color:white;border-color:var(--accent)}
+button.small{padding:6px 8px;font-size:13px}
+input[type=text]{width:100%;padding:8px;margin-top:8px;border-radius:6px;border:1px solid #ddd}
+.controls-row{display:flex;gap:10px;align-items:center;margin-top:8px}
+.lists{display:flex;gap:12px;margin-top:16px}
+.list-pane{flex:1;padding:12px;background:var(--card);border-radius:8px}
+.list-pane ul{list-style:none;padding:0;margin:8px 0}
+.list-pane li{padding:6px 0;border-bottom:1px dashed #eee}
+.error{margin-top:8px;color:var(--danger)}
+.time{color:#555;margin-right:10px;font-size:12px}
+footer{margin-top:18px;color:#666}
