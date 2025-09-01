@@ -10,6 +10,7 @@ import {
   LinearScale,
   BarElement,
 } from "chart.js";
+import "./App.css"; // 👈 aquí importamos el CSS para responsive
 
 ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement);
 
@@ -234,34 +235,21 @@ function App() {
       <hr />
 
       {/* Responsive gráficos */}
-      <div
-        style={{
-          display: "flex",
-          gap: "2rem",
-          alignItems: "flex-start",
-          flexWrap: "wrap", // clave: se acomoda abajo en pantallas chicas
-        }}
-      >
+      <div className="charts-container">
         {/* Pie */}
-        <div style={{ width: "300px", flex: "1 1 100%" }}>
+        <div style={{ width: "300px" }}>
           <h3>Estado de Coches</h3>
           <Pie data={pieData} />
         </div>
 
         {/* Barra + detalle + buscar */}
-        <div
-          style={{
-            display: "flex",
-            gap: "2rem",
-            alignItems: "flex-start",
-            flexWrap: "wrap", // igual aquí
-          }}
-        >
-          <div style={{ width: "500px", flex: "1 1 100%" }}>
+        <div className="charts-subcontainer">
+          <div style={{ width: "500px" }}>
             <h3>Coches en Riesgo (Antigüedad)</h3>
             <Bar data={barData} options={barOptions} width={300} height={200} />
           </div>
-          <div style={{ width: "250px", flex: "1 1 100%" }}>
+
+          <div style={{ width: "250px" }}>
             <h3>Detalle</h3>
             <ul>
               <li>{`<5 min : ${cochesPorRango["<5 min"].join(", ") || "Ninguno"}`}</li>
@@ -272,16 +260,23 @@ function App() {
           </div>
 
           {/* Nueva sección buscar coche */}
-          <div style={{ width: "250px", flex: "1 1 100%" }}>
+          <div style={{ width: "250px" }}>
             <h3>Buscar coche</h3>
-            <input
-              type="number"
-              value={buscarCoche}
-              onChange={(e) => setBuscarCoche(e.target.value)}
-              onKeyDown={handleBuscarKeyDown}
-              style={{ marginRight: "0.5rem" }}
-            />
-            <button onClick={handleBuscar}>Buscar</button>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+              <input
+                type="number"
+                value={buscarCoche}
+                onChange={(e) => setBuscarCoche(e.target.value)}
+                onKeyDown={handleBuscarKeyDown}
+                style={{ width: "100%", boxSizing: "border-box" }}
+              />
+              <button
+                onClick={handleBuscar}
+                style={{ width: "100%", boxSizing: "border-box" }}
+              >
+                Buscar
+              </button>
+            </div>
             <div style={{ marginTop: "1rem" }}>
               {resultadoBusqueda ? (
                 <div>

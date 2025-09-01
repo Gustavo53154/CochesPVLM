@@ -34,3 +34,31 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+
+.charts-container {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  flex-wrap: nowrap; /* por defecto en PC lado a lado */
+}
+
+.charts-subcontainer {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+
+/* Responsive en celulares */
+@media (max-width: 768px) {
+  .charts-container {
+    flex-wrap: wrap;
+  }
+  .charts-subcontainer {
+    flex-wrap: wrap;
+  }
+  .charts-container > div,
+  .charts-subcontainer > div {
+    flex: 1 1 100%;
+  }
+}
